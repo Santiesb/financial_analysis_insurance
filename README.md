@@ -49,4 +49,4 @@ financial_analysis/
 This project is licensed under the MIT License.
 
 ## Authors
-- **Your Name** - [GitHub](https://github.com/your-username)
+- **Santiago Esbert Reviriego** - [GitHub](https://github.com/Santiesb)
