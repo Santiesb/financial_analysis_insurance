@@ -5,8 +5,6 @@ from scipy.special import expit  # For logistic growth
 # Add the docs/financial_analysis directory to the Python path
 sys.path.append(os.path.join(os.path.dirname(__file__), 'docs', 'financial_analysis'))
 
-image_path = os.path.join(os.path.dirname(__file__), 'images', "mapfre_logo.svg")
-
 import helper_functions as hf
 import assumptions_config as ac
 import elements_streamlit as elements
@@ -21,7 +19,6 @@ st.set_page_config(layout="wide")
 # ---------------- Streamlit Application ----------------
 
 # In main flow:
-st.sidebar.image(image_path, width=100)
 st.sidebar.header("Scenario Configuration")
 
 # Time frame outside scenarios for shared configuration
@@ -40,7 +37,6 @@ df2 = hf.calculate_financials(years, assumptions2)
 # ---------------- Visualization ----------------
 
 # Header with image
-st.image(image_path, width= 400)  # Adjust the path and width as needed
 st.header("Health Chatbot Implementation Sensitivity Analysis")
 
 # Scenario Metrics Comparison

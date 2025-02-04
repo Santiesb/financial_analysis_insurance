@@ -77,18 +77,18 @@ def plot_waterfall(scenario_df, scenario_name, y_max):
 def compare_assumptions(assumptions1, assumptions2):
     categories = {
         "Costes de implementación": ["first_year_costs", "recurring_monthly_costs"],
-        "Negocio": ["initial_mapfre_health_policies", "avg_contacts_phone_web_daily", "health_insurance_yearly_company_growth_rate", "perc_estimated_current_conversion", "conversion_increase", "max_conversion_rate"],  
+        "Negocio": ["initial_insurance_company_health_policies", "avg_contacts_phone_web_daily", "health_insurance_yearly_company_growth_rate", "perc_estimated_current_conversion", "conversion_increase", "max_conversion_rate"],  
         "Retencion": ["nps_increase"],
-        "Financiero y Costes": ["mapfre_avg_policy_price", "discount_rate", "avg_telephone_cost_per_interaction", "avg_chatbot_cost_per_interaction", "perc_contacts_handled_by_chatbot_initial", "perc_contacts_handled_by_chatbot_growth"]
+        "Financiero y Costes": ["insurance_company_avg_policy_price", "discount_rate", "avg_telephone_cost_per_interaction", "avg_chatbot_cost_per_interaction", "perc_contacts_handled_by_chatbot_initial", "perc_contacts_handled_by_chatbot_growth"]
     }
 
     absolute_keys = {
-        "initial_mapfre_health_policies": "Pólizas de salud de Mapfre a 2024",
+        "initial_insurance_company_health_policies": "Pólizas de salud de insurance_company a 2024",
         "avg_contacts_phone_web_daily": "Interacciones diarias promedio (teléfono + web)"
         }
     
     percentage_keys = {
-        "health_insurance_yearly_company_growth_rate": "Tasa de crecimiento anual de Mapfre",
+        "health_insurance_yearly_company_growth_rate": "Tasa de crecimiento anual de insurance_company",
         "perc_estimated_current_conversion": "Porcentaje estimado de conversión actual",
         "avg_chatbot_cost_per_interaction": "Porcentaje de abaratamiento de costes interacciones del chatbot",
         "conversion_increase": "Incremento de conversión anual",
@@ -106,7 +106,7 @@ def compare_assumptions(assumptions1, assumptions2):
 
     monetary_small_keys = {
         "avg_telephone_cost_per_interaction": "Costo promedio por interacción telefónica",
-        "mapfre_avg_policy_price": "Valor promedio de las pólizas en Mapfre"
+        "insurance_company_avg_policy_price": "Valor promedio de las pólizas en insurance_company"
     }
 
     table_data = []

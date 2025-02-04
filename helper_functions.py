@@ -124,37 +124,37 @@ def calculate_contacts(initial_contacts,
     
     return total_contacts, phone_contacts, web_contacts, chatbot_contacts
 
-def calculate_new_customers(total_contacts, conversion_rate, avg_market_policy_price, mapfre_avg_policy_price, price_elasticity):
+def calculate_new_customers(total_contacts, conversion_rate, avg_market_policy_price, insurance_company_avg_policy_price, price_elasticity):
     """
     Calculate the number of new customers, adjusted for price sensitivity.
     - total_contacts: Total number of contacts.
     - conversion_rate: Conversion rate of contacts to customers.
     - avg_market_policy_price: Current average market policy price. AVG. MARKET
-    - mapfre_avg_policy_price: Mapfre policy price for comparison. MAPFRE
+    - insurance_company_avg_policy_price: insurance_company policy price for comparison. insurance_company
     - price_elasticity: Price elasticity factor.
 
     Returns the adjusted number of new customers.
     """
-    price_adjustment_factor = (avg_market_policy_price / mapfre_avg_policy_price) ** price_elasticity
+    price_adjustment_factor = (avg_market_policy_price / insurance_company_avg_policy_price) ** price_elasticity
     new_customers = total_contacts * conversion_rate * price_adjustment_factor
     return new_customers
 
-def calculate_retention_profit(new_customers, initial_mapfre_health_policies, nps_increase, nps_diminishing_rate, year, mapfre_avg_policy_price):
+def calculate_retention_profit(new_customers, initial_insurance_company_health_policies, nps_increase, nps_diminishing_rate, year, insurance_company_avg_policy_price):
     """
     Calculate profit from customer retention improvements due to NPS increase.
     - new_customers: Number of new customers acquired in the year.
-    - initial_mapfre_health_policies: Total existing policies at the start of the year.
+    - initial_insurance_company_health_policies: Total existing policies at the start of the year.
     - nps_increase: Percentage increase in retention due to NPS improvement.
     - nps_diminishing_rate: Annual rate at which the NPS effect diminishes.
     - year: Current year in the projection.
-    - mapfre_avg_policy_price: Average annual revenue per policy.
+    - insurance_company_avg_policy_price: Average annual revenue per policy.
 
     Returns the revenue generated from retained customers.
     """
     retention_effect = nps_increase * (1 - (year * nps_diminishing_rate))
     retention_effect = max(retention_effect, 0)  # Ensure retention effect doesn't drop below 0.
-    retained_customers = initial_mapfre_health_policies * retention_effect + new_customers * retention_effect
-    return retained_customers * mapfre_avg_policy_price
+    retained_customers = initial_insurance_company_health_policies * retention_effect + new_customers * retention_effect
+    return retained_customers * insurance_company_avg_policy_price
 
 def calculate_chatbot_savings(contact_volume, phone_cost, chatbot_cut_cost):
     """
@@ -204,7 +204,7 @@ def calculate_financials(time_period, assumptions, no_implementation=False):
     cumulative_costs = 0
     cumulative_profit = 0
 
-    mapfre_avg_policy_price = assumptions["mapfre_avg_policy_price"]  # Mapfre policy price for comparison
+    insurance_company_avg_policy_price = assumptions["insurance_company_avg_policy_price"]  # insurance_company policy price for comparison
     avg_market_policy_price = assumptions["avg_market_policy_price"]  # Average market policy price
     price_elasticity = assumptions["price_elasticity"]  # Default price elasticity factor
 
@@ -245,18 +245,18 @@ def calculate_financials(time_period, assumptions, no_implementation=False):
                 total_contacts,
                 conversion_rate,
                 avg_market_policy_price,
-                mapfre_avg_policy_price,
+                insurance_company_avg_policy_price,
                 price_elasticity
             )
 
             # Calculate retention profit
             retention_profit = calculate_retention_profit(
                 new_customers,
-                assumptions["initial_mapfre_health_policies"],
+                assumptions["initial_insurance_company_health_policies"],
                 assumptions["nps_increase"],
                 assumptions["nps_diminishing_rate"],
                 year,
-                mapfre_avg_policy_price
+                insurance_company_avg_policy_price
             )
 
             # Calculate savings from chatbot adoption

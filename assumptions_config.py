@@ -40,8 +40,8 @@ def input_assumptions(scenario_name):
         0.0, 0.6, 0.3  # Range: 0% to 100%, Default: 30%.  ### MEDIA DE LLAMADAS POR INTERACCION DE USUARIO 6/7--> CALCULAR CUANTAS INTERACCIONES SON NECESARIAS CON EL CHATBOT
     )  # Percentage cost reduction of chatbot vs. telephone interactions.
 
-    mapfre_avg_policy_price = st.sidebar.number_input(
-        f"{scenario_name} - Mapfre Avg. Policy Value (€)",
+    insurance_company_avg_policy_price = st.sidebar.number_input(
+        f"{scenario_name} - insurance_company Avg. Policy Value (€)",
         value=60  # Default: €70 per health insurance policy. TBC Maria
     )  # Average annual revenue generated per health insurance policy.
 
@@ -50,7 +50,7 @@ def input_assumptions(scenario_name):
     return {
         # Fixed Assumptions: Derived from company data and historical benchmarks
         # "years": scenario_timeframe(),  # Timeframe for the analysis, defined elsewhere.
-        "initial_mapfre_health_policies": 2_000_000,  # Starting insurance policies at the end of 2024 (from Mapfre investors report). TBC Maria
+        "initial_insurance_company_health_policies": 2_000_000,  # Starting insurance policies at the end of 2024 (from insurance_company investors report). TBC Maria
         "avg_contacts_phone_web_daily": 35_000,  # Average daily customer interactions (phone + web). AKA cotizaciones
         "nps_increase": 0.02,  # 2% improvement in retention from NPS enhancement.
         "nps_diminishing_rate": 0.01,  # 1% annual decline in the effect of NPS improvement.
@@ -76,7 +76,7 @@ def input_assumptions(scenario_name):
         "chatbot_increase_rate": 0.05,
         # Dynamic Assumptions: Configurable by the user
           # perc_contacts_handled_by_chatbot_initial,  
-        "mapfre_avg_policy_price": mapfre_avg_policy_price,  # Average annual revenue per policy (€).
+        "insurance_company_avg_policy_price": insurance_company_avg_policy_price,  # Average annual revenue per policy (€).
         "health_insurance_yearly_company_growth_rate": 0.095,  # Company growth rate (%).
         "perc_estimated_current_conversion": perc_estimated_current_conversion,  # Initial conversion rate (%).
         "avg_telephone_cost_per_interaction": avg_telephone_cost_per_interaction,  # Cost per phone interaction (€).
