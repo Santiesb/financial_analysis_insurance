@@ -79,7 +79,7 @@ def compare_assumptions(assumptions1, assumptions2):
         "Costes de implementación": ["first_year_costs", "recurring_monthly_costs"],
         "Negocio": ["initial_insurance_company_health_policies", "avg_contacts_phone_web_daily", "health_insurance_yearly_company_growth_rate", "perc_estimated_current_conversion", "conversion_increase", "max_conversion_rate"],  
         "Retencion": ["nps_increase"],
-        "Financiero y Costes": ["insurance_company_avg_policy_price", "discount_rate", "avg_telephone_cost_per_interaction", "avg_chatbot_cost_per_interaction", "perc_contacts_handled_by_chatbot_initial", "perc_contacts_handled_by_chatbot_growth"]
+        "Financiero y Costes": ["insurance_company_avg_policy_price", "discount_rate", "avg_telephone_cost_per_interaction", "avg_chatbot_cost_per_interaction", "initial_chatbot_rate"]
     }
 
     absolute_keys = {
@@ -93,8 +93,7 @@ def compare_assumptions(assumptions1, assumptions2):
         "avg_chatbot_cost_per_interaction": "Porcentaje de abaratamiento de costes interacciones del chatbot",
         "conversion_increase": "Incremento de conversión anual",
         "max_conversion_rate": "Tasa máxima de conversión potencialmente alcanzable",
-        "perc_contacts_handled_by_chatbot_initial": "Porcentaje de contactos manejados por el chatbot inicialmente",
-        "perc_contacts_handled_by_chatbot_growth": "Crecimiento del porcentaje de contactos manejados por el chatbot",
+        "initial_chatbot_rate": "Porcentaje de contactos manejados por el chatbot inicialmente",
         "nps_increase": "Incremento del NPS a raíz de la implementación",
         "discount_rate": "Tasa de inflación considerada en las proyecciones"
     }
