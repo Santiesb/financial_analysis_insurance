@@ -152,7 +152,7 @@ def calculate_retention_profit(new_customers, initial_insurance_company_health_p
     Returns the revenue generated from retained customers.
     """
     retention_effect = nps_increase * (1 - (year * nps_diminishing_rate))
-    retention_effect = max(retention_effect, 0)  # Ensure retention effect doesn't drop below 0.
+    retention_effect = retention_effect # max(retention_effect, 0)  # Ensure retention effect doesn't drop below 0.
     retained_customers = initial_insurance_company_health_policies * retention_effect + new_customers * retention_effect
     return retained_customers * insurance_company_avg_policy_price
 
@@ -251,12 +251,12 @@ def calculate_financials(time_period, assumptions, no_implementation=False):
 
             # Calculate retention profit
             retention_profit = calculate_retention_profit(
-                new_customers,
-                assumptions["initial_insurance_company_health_policies"],
-                assumptions["nps_increase"],
-                assumptions["nps_diminishing_rate"],
-                year,
-                insurance_company_avg_policy_price
+                new_customers = new_customers,
+                initial_insurance_company_health_policies = assumptions["initial_insurance_company_health_policies"],
+                nps_increase = assumptions["nps_increase"],
+                nps_diminishing_rate=assumptions["nps_diminishing_rate"],
+                year = year,
+                insurance_company_avg_policy_price = insurance_company_avg_policy_price
             )
 
             # Calculate savings from chatbot adoption

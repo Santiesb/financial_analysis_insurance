@@ -40,10 +40,10 @@ def input_assumptions(scenario_name):
         0.0, 0.6, 0.3  # Range: 0% to 100%, Default: 30%.  ### MEDIA DE LLAMADAS POR INTERACCION DE USUARIO 6/7--> CALCULAR CUANTAS INTERACCIONES SON NECESARIAS CON EL CHATBOT
     )  # Percentage cost reduction of chatbot vs. telephone interactions.
 
-    insurance_company_avg_policy_price = st.sidebar.number_input(
-        f"{scenario_name} - insurance_company Avg. Policy Value (€)",
-        value=60  # Default: €70 per health insurance policy. TBC Maria
-    )  # Average annual revenue generated per health insurance policy.
+    # insurance_company_avg_policy_price = st.sidebar.number_input(
+    #     f"{scenario_name} - insurance_company Avg. Policy Value (€)",
+    #     value=50  # Default: €50 per health insurance policy.
+    # )  # Average annual revenue generated per health insurance policy.
 
     # Return a dictionary of assumptions
 
@@ -52,19 +52,20 @@ def input_assumptions(scenario_name):
         # "years": scenario_timeframe(),  # Timeframe for the analysis, defined elsewhere.
         "initial_insurance_company_health_policies": 2_000_000,  # Starting insurance policies at the end of 2024 (from insurance_company investors report). TBC Maria
         "avg_contacts_phone_web_daily": 3_500,  # Average daily customer interactions (phone + web). AKA cotizaciones
-        "nps_increase": 0.02,  # 2% improvement in retention from NPS enhancement.
-        "nps_diminishing_rate": 0.01,  # 1% annual decline in the effect of NPS improvement.
+        "nps_increase": 0.01,  # 1% improvement in retention from NPS enhancement.
+        "nps_diminishing_rate": -0.005,  # 1% annual decline in the effect of NPS improvement.
         "economies_scale_cost_factor": 0.03,  # 3% annual efficiency gain due to economies of scale.
-        "first_year_costs": 680_000 + 250_000 + 100_000,  # Total initial implementation costs:
-        # - Design & implementation: €680k
-        # - Database configuration & integration: €250k
-        # - Testing: €100k
-        "recurring_monthly_costs": 80_000,  # Monthly infrastructure costs after implementation. LLAMADAS API CHATBOT
+        "first_year_costs": 110_000 + 100_000 + 40_000 + 10_000,  # Total initial implementation costs:
+        # - Team Costs: €110k
+        # - Design & implementation: €100k
+        # - Database configuration & integration: €40k
+        # - Testing: €10k
+        "recurring_monthly_costs": 50_000,  # Monthly infrastructure costs after implementation. LLAMADAS API CHATBOT
         "conversion_increase": 0.005,  # Annual improvement in conversion rate (0.05%).
         "max_conversion_rate": 0.03,  # Maximum achievable conversion rate (3%).
         "discount_rate": 0.05,  # Discount rate for financial projections (5%).
 
-        "avg_market_policy_price": 60,  # Base value of current health insurance policy (€60). TBC Maria
+        "avg_market_policy_price": 40,  # Base value of current health insurance policy (€40).
         "price_elasticity": 0.7,  # Price elasticity of demand for insurance policies (0.5).
 
         "initial_phone_rate": 0.6,
@@ -76,7 +77,7 @@ def input_assumptions(scenario_name):
         "chatbot_increase_rate": 0.05,
         # Dynamic Assumptions: Configurable by the user
           # perc_contacts_handled_by_chatbot_initial,  
-        "insurance_company_avg_policy_price": insurance_company_avg_policy_price,  # Average annual revenue per policy (€).
+        "insurance_company_avg_policy_price": 50,  # Average annual revenue per policy (€).
         "health_insurance_yearly_company_growth_rate": 0.095,  # Company growth rate (%).
         "perc_estimated_current_conversion": perc_estimated_current_conversion,  # Initial conversion rate (%).
         "avg_telephone_cost_per_interaction": avg_telephone_cost_per_interaction,  # Cost per phone interaction (€).
