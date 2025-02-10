@@ -51,7 +51,7 @@ def input_assumptions(scenario_name):
         # Fixed Assumptions: Derived from company data and historical benchmarks
         # "years": scenario_timeframe(),  # Timeframe for the analysis, defined elsewhere.
         "initial_insurance_company_health_policies": 2_000_000,  # Starting insurance policies at the end of 2024 (from insurance_company investors report). TBC Maria
-        "avg_contacts_phone_web_daily": 35_000,  # Average daily customer interactions (phone + web). AKA cotizaciones
+        "avg_contacts_phone_web_daily": 3_500,  # Average daily customer interactions (phone + web). AKA cotizaciones
         "nps_increase": 0.02,  # 2% improvement in retention from NPS enhancement.
         "nps_diminishing_rate": 0.01,  # 1% annual decline in the effect of NPS improvement.
         "economies_scale_cost_factor": 0.03,  # 3% annual efficiency gain due to economies of scale.
