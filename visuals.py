@@ -6,10 +6,10 @@ import pandas as pd
 
 def plot_waterfall(scenario_df, scenario_name, y_max):
     components = {
-        "New Customers": scenario_df["New Customers (M)"].sum(),
-        "Retention": scenario_df["Retention Profit (€M)"].sum(),
-        "Savings": scenario_df["Chatbot Savings (€M)"].sum(),
-        "Costs": -scenario_df["Costs (€M)"].sum()
+        "Nuevos clientes": scenario_df["Nuevos Clientes (M)"].sum(),
+        "Retención": scenario_df["Beneficio de Retención (€M)"].sum(),
+        "Ahorro": scenario_df["Ahorros del Chatbot (€M)"].sum(),
+        "Costes": -scenario_df["Costes (€M)"].sum()
     }
 
     labels = list(components.keys())
@@ -70,7 +70,7 @@ def plot_waterfall(scenario_df, scenario_name, y_max):
     # Set x-axis label size
     ax.tick_params(axis='x', labelsize=18)
 
-    ax.set_ylabel("Cumulative Profit Contribution (€M)", fontsize=15)
+    ax.set_ylabel("Contribución Acumulada al Beneficio (€M)", fontsize=15)
     st.pyplot(fig)
 
 
@@ -132,10 +132,10 @@ def compare_assumptions(assumptions1, assumptions2):
             else:
                 assumption_name = key.replace("_", " ").capitalize()
             table_data.append({
-                "Category": category,
-                "Assumption": assumption_name,
-                "Scenario 1": value1,
-                "Scenario 2": value2
+                "Categoría": category,
+                "Supuesto": assumption_name,
+                "Escenario 1": value1,
+                "Escenario 2": value2
             })
 
     comparison_table = pd.DataFrame(table_data)

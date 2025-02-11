@@ -19,16 +19,16 @@ st.set_page_config(layout="wide")
 # ---------------- Streamlit Application ----------------
 
 # In main flow:
-st.sidebar.header("Scenario Configuration")
+st.sidebar.header("Configuración de los escenarios")
 
 # Time frame outside scenarios for shared configuration
 years = ac.scenario_timeframe()
 
 # Create collapsible scenario configurations
-st.sidebar.subheader("Scenario 1")
-assumptions1 = elements.create_scenario_config("Scenario 1")
-st.sidebar.subheader("Scenario 2")
-assumptions2 = elements.create_scenario_config("Scenario 2")
+st.sidebar.subheader("Escenario 1")
+assumptions1 = elements.create_scenario_config("Escenario 1")
+st.sidebar.subheader("Escenario 2")
+assumptions2 = elements.create_scenario_config("Escenario 2")
 
 # Create DataFrames
 df1 = hf.calculate_financials(years, assumptions1)
@@ -37,20 +37,20 @@ df2 = hf.calculate_financials(years, assumptions2)
 # ---------------- Visualization ----------------
 
 # Header with image
-st.header("Health Chatbot Implementation Sensitivity Analysis")
+st.header("Análisis de sensibilidad de la implementación de Paco")
 
 # Scenario Metrics Comparison
-st.subheader("Scenario Metrics Comparison")
+st.subheader("Comparación de Métricas de Escenarios")
 elements.scenario_metrics_comparison(df1, df2)
 
 # Scenario Comparison
-st.subheader("Scenario Comparison")
+st.subheader("Comparación de Escenarios")
 elements.scenario_comparison(df1, df2)
 
 # Cumulative Profit Contribution
-st.subheader("Cumulative Profit Contribution")
+st.subheader("Contribución Acumulada al Beneficio")
 elements.cumulative_profit_contribution(df1, df2)
 
 # Assumptions Comparison Table
-st.subheader("Assumptions Comparison Table")
+st.subheader("Tabla de Comparación de Supuestos")
 elements.assumptions_comparison_table(assumptions1, assumptions2)

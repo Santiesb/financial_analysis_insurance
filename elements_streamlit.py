@@ -27,7 +27,7 @@ def scenario_metrics_comparison(df1, df2):
     df1 (pd.DataFrame): DataFrame for Scenario 1.
     df2 (pd.DataFrame): DataFrame for Scenario 2.
     """
-    metrics = st.multiselect("Select Metrics", df1.columns[1:])
+    metrics = st.multiselect("Selecciona métricas", df1.columns[1:])
 
     if metrics:
         col1, col2 = st.columns([10, 10])  # Adjust the width ratio as needed
@@ -38,7 +38,7 @@ def scenario_metrics_comparison(df1, df2):
         y_max = max(max_y1, max_y2) * 1.1
 
         with col1:
-            st.subheader("Scenario 1")
+            st.subheader("Escenario 1")
             chart1 = alt.Chart(df1).transform_fold(
                 metrics,
                 as_=['Metric', 'Value']
@@ -56,7 +56,7 @@ def scenario_metrics_comparison(df1, df2):
             st.altair_chart(chart1, use_container_width=True)
 
         with col2:
-            st.subheader("Scenario 2")
+            st.subheader("Escenario 2")
             chart2 = alt.Chart(df2).transform_fold(
                 metrics,
                 as_=['Metric', 'Value']
@@ -81,12 +81,12 @@ def scenario_comparison(df1, df2):
     df1 (pd.DataFrame): DataFrame for Scenario 1.
     df2 (pd.DataFrame): DataFrame for Scenario 2.
     """
-    comparison_metric = st.selectbox("Select Metric for Comparison", df1.columns[1:])
+    comparison_metric = st.selectbox("Selecciona una métrica para comparar", df1.columns[1:])
     if comparison_metric:
         comparison_df = pd.DataFrame({
             "Year": df1["Year"],
-            f"Scenario 1 - {comparison_metric}": df1[comparison_metric],
-            f"Scenario 2 - {comparison_metric}": df2[comparison_metric]
+            f"Escenario 1 - {comparison_metric}": df1[comparison_metric],
+            f"Escenario 2 - {comparison_metric}": df2[comparison_metric]
         }).set_index("Year")
 
         # Calculate the maximum y-axis limit for the comparison chart
@@ -94,12 +94,12 @@ def scenario_comparison(df1, df2):
 
         # Create the comparison chart using Altair
         comparison_chart = alt.Chart(comparison_df.reset_index()).transform_fold(
-            [f"Scenario 1 - {comparison_metric}", f"Scenario 2 - {comparison_metric}"],
-            as_=['Scenario', 'Value']
+            [f"Escenario 1 - {comparison_metric}", f"Escenario 2 - {comparison_metric}"],
+            as_=['Escenario', 'Value']
         ).mark_line().encode(
-            x=alt.X('Year:Q', axis=alt.Axis(format='d', title='Year')),
+            x=alt.X('Year:Q', axis=alt.Axis(format='d', title='Año')),
             y=alt.Y('Value:Q', axis=alt.Axis(title=comparison_metric), scale=alt.Scale(domain=[0, max_y_comparison])),
-            color='Scenario:N',
+            color='Escenario:N',
             tooltip=['Year:Q', 'Value:Q']
         ).properties(
             height=400,
@@ -120,12 +120,12 @@ def cumulative_profit_contribution(df1, df2):
         col1, col2 = st.columns([5, 5])
 
         with col1:
-            st.subheader("Scenario 1")
-            visuals.plot_waterfall(df1, "Scenario 1", y_max)
+            st.subheader("Escenario 1")
+            visuals.plot_waterfall(df1, "Escenario 1", y_max)
 
         with col2:
-            st.subheader("Scenario 2")
-            visuals.plot_waterfall(df2, "Scenario 2", y_max)
+            st.subheader("Escenario 2")
+            visuals.plot_waterfall(df2, "Escenario 2", y_max)
 
 def assumptions_comparison_table(assumptions1, assumptions2):
     """

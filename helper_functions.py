@@ -284,17 +284,17 @@ def calculate_financials(time_period, assumptions, no_implementation=False):
             # Append yearly metrics to the results
             rows.append({
                 "Year": year,
-                "Total Contacts (M)": total_contacts / 1_000_000,
-                "Phone Contacts (M)": phone_contacts / 1_000_000,
-                "Web Contacts (M)": web_contacts / 1_000_000,
-                "Chatbot Contacts (M)": chatbot_contacts / 1_000_000,
-                "New Customers (M)": new_customers / 1_000_000,
-                "Retention Profit (€M)": retention_profit / 1_000_000,
-                "Chatbot Savings (€M)": chatbot_savings / 1_000_000,
-                "Costs (€M)": costs / 1_000_000,
-                "Net Profit (€M)": net_profit / 1_000_000,
-                "Cumulative Costs (€M)": cumulative_costs / 1_000_000,
-                "Cumulative Profit (€M)": cumulative_profit / 1_000_000,
+                "Contactos Totales (M)": total_contacts / 1_000_000,
+                "Contactos Telefónicos (M)": phone_contacts / 1_000_000,
+                "Contactos Web (M)": web_contacts / 1_000_000,
+                "Contactos Chatbot (M)": chatbot_contacts / 1_000_000,
+                "Nuevos Clientes (M)": new_customers / 1_000_000,
+                "Beneficio de Retención (€M)": retention_profit / 1_000_000,
+                "Ahorros del Chatbot (€M)": chatbot_savings / 1_000_000,
+                "Costes (€M)": costs / 1_000_000,
+                "Beneficio Neto (€M)": net_profit / 1_000_000,
+                "Costes Acumulados (€M)": cumulative_costs / 1_000_000,
+                "Beneficio Acumulado (€M)": cumulative_profit / 1_000_000,
                 "ROI (%)": (cumulative_profit / cumulative_costs * 100) if cumulative_costs > 0 else 0
     })
 
@@ -306,6 +306,6 @@ def calculate_financials(time_period, assumptions, no_implementation=False):
 
 # Calculate the maximum y-axis limit across both scenarios
 def calculate_max_y_limit(df1, df2):
-    max_y1 = df1[["New Customers (M)", "Retention Profit (€M)", "Chatbot Savings (€M)", "Costs (€M)"]].sum().max()
-    max_y2 = df2[["New Customers (M)", "Retention Profit (€M)", "Chatbot Savings (€M)", "Costs (€M)"]].sum().max()
+    max_y1 = df1[["Nuevos Clientes (M)", "Beneficio de Retención (€M)", "Ahorros del Chatbot (€M)", "Costes (€M)"]].sum().max()
+    max_y2 = df2[["Nuevos Clientes (M)", "Beneficio de Retención (€M)", "Ahorros del Chatbot (€M)", "Costes (€M)"]].sum().max()
     return max(max_y1, max_y2) * 1.1
